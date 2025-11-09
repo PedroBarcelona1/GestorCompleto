@@ -5,122 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gestor de Gastos</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+    html, body {
+      height: 100%;
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
+    }
+
+    .contenedor {
+      text-align: center;
+      width: 320px;
     }
 
     h1 {
-      color: #333;
       margin-bottom: 20px;
     }
 
-    #formularioGasto form {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      width: 300px;
-    }
-
-    #formularioGasto input {
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
-
-    #formularioGasto button {
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      background-color: blue;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    #formularioGasto button:hover {
-      background-color: #45a049;
-    }
-
-    #totalGastos {
-      margin: 20px 0;
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    #listadoGastos {
-      width: 320px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .gasto-item {
-      background-color: #fff;
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .gasto-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .etiquetas {
-      margin-top: 5px;
-    }
-
-    .etiqueta {
-      display: inline-block;
-      background-color: #e0e0e0;
-      color: #555;
-      border-radius: 5px;
-      padding: 2px 6px;
-      margin-right: 4px;
-      font-size: 12px;
-    }
-
-    .borrar-btn {
-      background-color: #f44336;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      padding: 5px 10px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .borrar-btn:hover {
-      background-color: #d32f2f;
+    formulario-gasto, lista-gastos {
+      display: block;
+      margin: 10px 0;
+      width: 100%;
     }
   </style>
 </head>
 <body>
-  <h1>Gestor de Gastos</h1>
+  <div class="contenedor">
+    <h1>Gestor de Gastos</h1>
 
-  <section id="formularioGasto"></section>
+    <formulario-gasto></formulario-gasto>
+    <lista-gastos></lista-gastos>
+  </div>
 
-  <section id="totalGastos"></section>
-
-  <section id="listadoGastos"></section>
-
-  <script type="module" src="js/gestionPresupuestoWebV1.js"></script>
+  <script type="module" src="js/gestionPresupuestoWebV2.js"></script>
 </body>
 </html>
-
