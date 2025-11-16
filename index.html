@@ -1,47 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Gestor de Gastos</title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .contenedor {
-      text-align: center;
-      width: 320px;
-    }
-
-    h1 {
-      margin-bottom: 20px;
-    }
-
-    formulario-gasto, lista-gastos {
-      display: block;
-      margin: 10px 0;
-      width: 100%;
-    }
-  </style>
 </head>
 <body>
-  <div class="contenedor">
-    <h1>Gestor de Gastos</h1>
+  <h1>Gestor de Gastos</h1>
 
-    <formulario-gasto></formulario-gasto>
-    <lista-gastos></lista-gastos>
-  </div>
+  <formulario-gasto></formulario-gasto>
+  <lista-gastos></lista-gastos>
 
-  <script type="module" src="js/gestionPresupuestoWebV2.js"></script>
+  <button id="guardarGastos">Guardar</button>
+  <button id="cargarGastos">Recuperar</button>
+  
+   <!--Script que define los Web Components -->
+  <script type="module" src="./js/gestionPresupuestoWebV2.js"></script>
+
+  <script type="module">
+    import { listarGastos, sobrescribirGastos } from './js/gestionPresupuesto.js';
+
+    const CLAVE_LOCAL = 'misGastosApp'; // clave única para almacenamiento
+
+    // Guardar gastos en localStorage
+    document.getElementById('guardarGastos').onclick = () =>
+      localStorage.setItem(CLAVE_LOCAL, JSON.stringify(listarGastos()));
+
+    // Recuperar gastos desde localStorage
+    document.getElementById('cargarGastos').onclick = () => {
+      const datos = localStorage.getItem(CLAVE_LOCAL);
+      if (!datos) return; // si no hay datos, no hace nada
+      sobrescribirGastos(JSON.parse(datos));        // reconstruye objetos
+      document.querySelector('lista-gastos').render(); // actualizar lista visible
+    };
+  </script>
 </body>
 </html>
